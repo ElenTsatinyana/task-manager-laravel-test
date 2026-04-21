@@ -1,59 +1,124 @@
-# 🚀 Laravel Modern Task Manager (SPA)
+# 🚀 Laravel Role-Based Blog System
 
-A high-performance, single-page application (SPA) for task management built with **Laravel 12** and **Vanilla JavaScript**. This project demonstrates a clean separation between backend API logic and a dynamic frontend.
+A simple Laravel application with authentication, role-based access control, and CRUD functionality for posts.
 
-## 🌟 Features
+---
 
-- **Full CRUD Functionality**: Create, Read, Update, and Delete tasks without any page reloads.
-- **Dynamic UI/UX**: Smooth CSS transitions, hover effects, and a responsive card-based layout.
-- **Real-time Feedback**: Integrated **Toast Notifications** to inform the user about successful operations (Creation, Update, Deletion) or errors.
-- **In-place Editing**: Tasks can be edited directly within the list through a smooth toggle mechanism.
-- **Form Validation**: Client-side validation to ensure task titles are never empty.
+## ✨ Features
+
+* 🔐 User Authentication (Login / Logout)
+* 👥 Role-Based Access Control:
+
+  * **Admin** → Full access (dashboard + management)
+  * **Editor** → Create & edit posts
+  * **Viewer** → View only published posts
+* 📝 CRUD system for posts
+* 🔍 Search posts by title
+* 📄 Pagination (5 posts per page)
+* 👁️ Views counter for each post
+* 👤 User profile management (update / delete account)
+
+
+ * **Admin** → pass:user1234
+  * **Editor** → pass:user1234
+  * **Viewer** → pass:user1234
+---
 
 ## 🛠️ Tech Stack
 
-- **Backend**: Laravel 12 (PHP)
-- **Frontend**: Vanilla JavaScript (Fetch API), HTML5, CSS3 (Inter Font)
-- **Database**: MySQL / SQLite
-- **API Testing**: Thunder Client (VS Code Extension)
+* PHP (Laravel Framework)
+* MySQL
+* Blade Templates
+* Bootstrap / Tailwind (if used)
 
-## 🛰️ API Testing & Development
+---
 
-The backend RESTful API was rigorously tested using **Thunder Client** to ensure all endpoints (`GET`, `POST`, `PUT`, `DELETE`) return the correct JSON responses and status codes before frontend integration.
+## ⚙️ Installation
 
-| Method | Endpoint | Description |
-| :--- | :--- | :--- |
-| GET | `/api/tasks` | Fetch all tasks |
-| POST | `/api/tasks` | Create a new task |
-| PUT | `/api/tasks/{id}` | Update an existing task |
-| DELETE | `/api/tasks/{id}` | Remove a task |
-
-
-## ⚙️ Installation & Setup
-
-1. **Clone the repository:**
-   ```bash
-git clone https://github.com/ElenTsatinyana/task-manager-laravel-test.git
-cd task-manager-laravel-test
-
-Install Composer dependencies:
-
-Bash
+```bash 
+git clone https://github.com/your-username/Repo_laravel.git
+cd Repo_laravel
 composer install
-Configure Environment:
-
-Bash
 cp .env.example .env
 php artisan key:generate
-Database Setup:
-Update your .env with your database credentials.
+```
 
-Bash
+---
+
+### 📦 Setup Database
+
+Update `.env` file:
+
+```env  "
+DB_DATABASE=your_database_name
+DB_USERNAME=root
+DB_PASSWORD=
+```
+
+Run migrations:
+
+```bash "
 php artisan migrate
-Run the Application:
+```
 
-Bash
+---
+
+### ▶️ Run Project
+
+```bash"
 php artisan serve
-Visit http://127.0.0.1:8000 in your browser.
+```
 
-Developed by Elen Tsatinyan.
+Open in browser:
+
+```
+http://127.0.0.1:8000
+```
+
+---
+
+## 🔑 Roles System
+
+| Role   | Permissions                     |
+| ------ | ------------------------------- |
+| Admin  | Full access (manage everything) |
+| Editor | Create & edit posts             |
+| Viewer | View only published posts       |
+
+---
+
+## 🔐 Authentication Flow
+
+* Login required for dashboard access
+* After login:
+
+  * Admin → Dashboard
+  * Editor → Create Post page
+  * Viewer → Posts list
+
+---
+
+## 📁 Main Features Structure
+
+* `PostController` → CRUD operations
+* `AuthenticatedSessionController` → Login/Logout logic
+* `ProfileController` → User profile management
+* `Policies` → Authorization rules
+
+---
+
+## 📌 Future Improvements
+
+* Image upload for posts
+* API version (Laravel API)
+* Soft delete system
+* Admin dashboard analytics
+
+---
+
+## 👩‍💻 Author
+
+**Elen Tsatinyan**
+
+---
+
